@@ -1,0 +1,11 @@
+#what is the purpose of a class? purpose of a class is to make objects, 
+
+#instatiate: the term that means to make an object from a class(instatiating is creating an instance of a class)
+
+class Player:                 #to create the class, the parent class, you specify the class keyword and then the name of the class, and under note the attributes(data/ or in js properties) and methods(action functions)   
+  max_hp_hp = 4000            #the class has an attribute of max_hp, so the objects will to ***it can be accessed via dot noation***
+
+player1 = Player()            #the way to create a object is to create the name of the object and assign it class name(sort of like calling it and return it to a variable)
+print(player1.max_hp)
+#because the player class has a attribute of max_hp, so will the object player1 and it can be accessed via dot notation
+
