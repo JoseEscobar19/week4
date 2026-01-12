@@ -1,0 +1,14 @@
+# class Player:
+#     max_hp = 500
+    
+# player1 = Player()
+# print(player1.max_hp)
+
+Class Player:               #class is othe object factory
+    def __init__(self,name,hp):     #this is the constructor method,is what initializes
+        self.name = name            #the attributes for each object created in the factory
+        self.hp = hp                #the parameter list, is saying: here are the attributes 
+                                    #we want to set at the time of obj creation
+#in the body of the contructor method, we take the self object, the name string and hp int
+#passed in, then the name and hp values and assign them to corresponding
+# attributes in the self object
