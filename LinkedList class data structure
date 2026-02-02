@@ -37,3 +37,22 @@ llist.append("Third Node")              #we link node.next to the new_node
                         #14) we create a new linkedlist object name Llist by instantiating from the linkedlist class
                         #15) then well use append method to add a node with value of first Node- this will be the first node
                         #16) then well add more nodes using append method with different values, 
+
+***WHEN INSTATIATING WHAT GOES ON*
+I see where the confusion is! While you are calling the
+append method on the llist object, it isn't physically "stashing" the data values inside itself. Instead, it’s acting like a manager that organizes a chain of independent worker objects (the Nodes). 
+Here is exactly what happens in memory when you run your code:
+1. llist = LinkedList()
+You create a small "Manager" object. It has one attribute, self.head, which is currently None. 
+2. llist.append("First Node")
+    Inside append, a totally new and separate Node object is born elsewhere in memory.
+    The Manager (llist) simply updates its self.head to point to the memory address of this first Node. 
+3. llist.append("Second Node")
+    A second independent Node object is created somewhere else.
+    The Manager (llist) doesn't hold this one. Instead, it follows the self.head link to the first Node and tells it: "Your next pointer should now point to this new Second Node". 
+The Core Difference
+In a Standard Python List ([]), you have one container that physically grows to hold everything. 
+In your Linked List, the llist object is just an entry point. It doesn't contain "First," "Second," and "Third." It only contains a reference to the First one. That first node contains a reference to the Second, and so on. 
+Think of it like this:
+    Standard List: A single file folder containing three pieces of paper.
+    Linked List: A "treasure map" (llist) that tells you where to find the first buried chest. Inside that chest, you find the gold and a map to the second chest
