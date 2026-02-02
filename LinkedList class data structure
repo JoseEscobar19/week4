@@ -1,0 +1,39 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        
+class LinkedList:   #linked;ist must always know where the head is
+    def __init__(self): #this constructor methods will automatically run everytime a new object is started from this class
+        self.head = None     #set self.head equals none, this initializes any future objects head attribute to none 
+                                #when we first instantiate a linkedlist object from this class it wont have any nodes
+                                #so there is no head
+                                
+    def append(self, value):     #now we can set methods for the linkedlist class - it needs the self param, and value of node to append
+        new_node = Node(value)         # 1) first thing to do inside the append method is to instantiate a new node using the 
+                                #node class as the value arguement, which wie'll assign to a variable named new_node
+        if self.head is None:        # 2) keep in mind that the new node will have the next. attribute of none, because of Node class constructor
+            self.head = new_node        #3) now we have a new node but its not attached to anything, not attached to any mem addr - NEED to APPEND to linkedlist obeject
+            print(f"Head Node created, {self.head.value}")       #4) need to find tail node of list and link the node 
+            return                            #5) what if we need to append to a list that doesnt have any nodes yet?? when we first initialize a linkedlist, itll have no nodes in it
+                                            # and its head value, will be set to none, we want to set it up in this case scenerio, we'll set the new node created as the head node
+        node = self.head        #6) if self.head is none, we'll set the value of self.head to the new node, 
+        while node.next is not None:            #this should take the place of self.head.value, causing to append the new node to the list
+            node = node.next            #this is how well handle if a linkedlist is called and doesnt have a head Node yet
+                                     #7) if linked list is not empty and already has a head attr, then it doesnt enter that if code block,
+        node.next = new_node        #and we need to find the tail node of the linkedlist
+                                    #8) to do this, first name a variable and set to refer to the head node 
+                                    #9) then well set a while loop to traverse the linkedlist 
+                                    # *UNTILL WE REACH THE TAIL NODE, WE'LL RUN THE CODE INSIDE THE BODY**
+                                    #the tail node can be identified cuz its the only node in linklist to have a next attribute of none
+llist = LinkedList()                    #10) node=node.next means we traverse from one node to the next
+llist.append("First Node")              #11)when we reach the tail node, and exit the loop, the variable node contains a reference to the tail
+llist.append("Second Node")             #12) what we want to do NOW, is make the new node created the new tail node, 
+llist.append("Third Node")              #we link node.next to the new_node
+                               #since the node was the previous tail, new node is now the new tail, 
+                               #the end of the chain of links
+                               #13) the node variable still holds the previous tail- node,next.value gets us the value of the new tail
+                                           
+                        #14) we create a new linkedlist object name Llist by instantiating from the linkedlist class
+                        #15) then well use append method to add a node with value of first Node- this will be the first node
+                        #16) then well add more nodes using append method with different values, 
