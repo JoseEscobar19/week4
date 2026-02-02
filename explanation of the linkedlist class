@@ -1,0 +1,21 @@
+Why separate them?
+A Node object doesn't know it's in a list; it only knows its own value and the next "clue" in the chain. If you used a Node as your main "list" object, it would be messy. 
+Think about these three reasons why the LinkedList "Manager" is necessary:
+
+    Representing "Empty":
+        If you only had a Node class, how would you represent an empty list? A Node always has a value.
+        The LinkedList manager starts with self.head = None. That's how it says, "I exist, but I'm currently empty".
+    Tracking the "Entry Point":
+        In a linked list, if you lose the first node, you lose the entire list because there's no way to find the others.
+        The LinkedList manager acts as a permanent "bookmark" for the start of the chain.
+    Hiding the "Messy" Work:
+        Without a manager, every time you wanted to add data, you'd have to write a while loop manually in your main code.
+        The manager "abstracts" this. You just call .append("Data"), and the manager handles the complex traversal and pointer logic behind the scenes. 
+
+The "Bus Line" Analogy
+
+    The Node is a Bus Stop. It knows which stop comes next, but it doesn't know the name of the whole route or how many stops are left.
+    The LinkedList is the Bus Route Map. It’s the "Manager" that knows where the route starts and has the power to add new stops to the line. 
+
+The logic is clear: You keep them separate so the data (Node) doesn't have to worry about the organization (LinkedList). 
+Do you want to see how the manager would handle deleting a node, which is a bit trickier than appending?
